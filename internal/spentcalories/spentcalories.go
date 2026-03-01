@@ -81,7 +81,7 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 
 	switch activity {
 	case "Ходьба":
-		kkal, err = Walking(steps, weight, height, duration)
+		kkal, err = WalkingSpentCalories(steps, weight, height, duration)
 		if err != nil {
 			return "", err
 		}
@@ -107,7 +107,7 @@ func RunningSpentCalories(steps int, weight, height float64, duration time.Durat
 	return (weight * meanSpeed * durationInMinutes) / minInH, nil
 }
 
-func Walking(steps int, weight, height float64, duration time.Duration) (float64, error) {
+func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	if steps <= 0 || weight <= 0 || height <= 0 || duration <= 0 {
 		return 0, errors.New("все входные параметры должны быть больше 0")
 	}
